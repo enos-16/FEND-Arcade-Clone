@@ -31,16 +31,44 @@ Enemy.prototype.render = function() {
 
 class Player {
 	constructor() {
-		this.x = 0;
-		this.y = 0;
 		this.sprite = "images/char-horn-girl.png"; //need to ensure that sprites are loaded into engine.js
+		this.strafe = 101;
+		this.advance = 83;
+		this.startX = this.strafe * 2;
+		this.startY = this.advance * 5 - 10;
+		this.x = this.startX;
+		this.y = this.startY;
 	}
 
 	render() {
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 	}
+
 	update() {}
-	handleInput() {}
+	handleInput(input) {
+		switch (input) {
+			case "left":
+				if (this.x > 0) {
+					this.x -= this.strafe;
+				}
+				break;
+			case "up":
+				if (this.y > 0) {
+					this.y -= this.advance;
+				}
+				break;
+			case "right":
+				if (this.x < this.strafe * 4) {
+					this.x += this.strafe;
+				}
+				break;
+			case "down":
+				if (this.y < this.advance * 4) {
+					this.y += this.advance;
+				}
+				break;
+		}
+	}
 }
 
 // Now instantiate your objects.
