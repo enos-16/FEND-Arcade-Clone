@@ -78,21 +78,25 @@ class Player {
 	handleInput(input) {
 		switch (input) {
 			case "left":
+				//limits movement to leftmost section of the board
 				if (this.x > 0) {
 					this.x -= this.strafe;
 				}
 				break;
 			case "up":
+				//limits movement to uppermost section of the board
 				if (this.y > 0) {
 					this.y -= this.advance;
 				}
 				break;
 			case "right":
+				//limits movement to rightmost section of the board
 				if (this.x < this.strafe * 4) {
 					this.x += this.strafe;
 				}
 				break;
 			case "down":
+				//limits movement to bottom section of the board
 				if (this.y < this.advance * 4) {
 					this.y += this.advance;
 				}
