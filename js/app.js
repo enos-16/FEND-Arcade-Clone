@@ -21,10 +21,12 @@ Enemy.prototype.update = function(dt) {
 	// You should multiply any movement by the dt parameter
 	// which will ensure the game runs at the same speed for
 	// all computers.
+
+	//tells the enemies to move until off the screen and loop back once they are
 	if (this.x < this.end) {
 		this.x += this.speed * dt;
 	} else {
-		//reset to starting position
+		//reset to starting position once off screen
 		this.x = this.startPos;
 	}
 };
@@ -44,7 +46,7 @@ class Player {
 		this.strafe = 101;
 		this.advance = 83;
 		this.startX = this.strafe * 2;
-		this.startY = this.advance * 5 - 10;
+		this.startY = this.advance * 4 + 65;
 		this.x = this.startX;
 		this.y = this.startY;
 	}
@@ -53,7 +55,26 @@ class Player {
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 	}
 
-	update() {}
+	//set player back to starting position
+	resetPlayer() {
+		this.x = this.startX;
+		this.y = this.startY;
+	}
+
+	//checks if player has collided with enemy, if so, resets player to starting position
+	update() {
+		for (let enemy of allEnemies) {
+			if (
+				this.y === enemy.y &&
+				(enemy.x + enemy.rush / 2 > this.x &&
+					enemy.x < this.x + this.strafe / 2)
+			) {
+				this.resetPlayer();
+			}
+		}
+	}
+
+	//controls player movement on the board based on key press. Limits movement to within the board
 	handleInput(input) {
 		switch (input) {
 			case "left":
