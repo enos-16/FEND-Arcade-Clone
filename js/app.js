@@ -77,7 +77,6 @@ class Player {
 
 		//checks if player has made it to the end of the board
 		if (this.y === -18) {
-			//console.log("Game Over!!!");
 			this.win = true;
 		}
 	}
