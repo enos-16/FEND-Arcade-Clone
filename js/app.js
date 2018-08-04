@@ -13,6 +13,7 @@ var Enemy = function(y = 0, speed = 350, x = -101) {
 	this.end = this.rush * 5;
 	this.startPos = -this.rush;
 	this.speed = speed;
+	this.win = false;
 };
 
 // Update the enemy's position, required method for game
@@ -49,6 +50,7 @@ class Player {
 		this.startY = this.advance * 4 + 65;
 		this.x = this.startX;
 		this.y = this.startY;
+		this.victory = false;
 	}
 
 	render() {
@@ -61,8 +63,8 @@ class Player {
 		this.y = this.startY;
 	}
 
-	//checks if player has collided with enemy, if so, resets player to starting position
 	update() {
+		//checks if player has collided with enemy, if so, resets player to starting position
 		for (let enemy of allEnemies) {
 			if (
 				this.y === enemy.y &&
@@ -71,6 +73,12 @@ class Player {
 			) {
 				this.resetPlayer();
 			}
+		}
+
+		//checks if player has made it to the end of the board
+		if (this.y === -18) {
+			//console.log("Game Over!!!");
+			this.win = true;
 		}
 	}
 
