@@ -116,13 +116,28 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
+//generates random number for the speed value of enemies
+function randomSpeed() {
+	return Math.floor(Math.random() * (500 - 50 + 1) + 50);
+}
+
+//assign random speed for each enemy
+let randomEnemySpeed2 = randomSpeed();
+let randomEnemySpeed3 = randomSpeed();
+let randomEnemySpeed4 = randomSpeed();
+let randomEnemySpeed5 = randomSpeed();
+let randomEnemySpeed6 = randomSpeed();
+
 const player = new Player();
 let allEnemies = [];
 const enemy1 = new Enemy();
-const enemy2 = new Enemy(83, 500);
-const enemy3 = new Enemy(166, 200);
+const enemy2 = new Enemy(0, randomEnemySpeed2);
+const enemy3 = new Enemy(83, randomEnemySpeed3);
+const enemy4 = new Enemy(83, randomEnemySpeed4);
+const enemy5 = new Enemy(166, randomEnemySpeed5);
+const enemy6 = new Enemy(166, randomEnemySpeed6);
 
-allEnemies.push(enemy1, enemy2, enemy3);
+allEnemies.push(enemy1, enemy2, enemy3, enemy4, enemy5, enemy6);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

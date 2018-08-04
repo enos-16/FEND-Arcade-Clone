@@ -1,3 +1,38 @@
 body {
-    text-align: center;
+	text-align: center;
+}
+
+.modal_background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(46, 61, 73, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+.modal_background.hide {
+	display: none;
+}
+
+.modal_body {
+	position: relative;
+	/* height: 400px; */
+	width: 400px;
+	background: #ffffff;
+}
+
+.modal_buttons {
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+}
+
+.modal_btn {
+	height: 2.5em;
+	width: 6em;
 }
